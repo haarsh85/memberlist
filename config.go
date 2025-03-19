@@ -319,7 +319,7 @@ func DefaultLANConfig() *Config {
 		DisableTcpPings:         false,                  // TCP pings are safe, even with mixed versions
 		AwarenessMaxMultiplier:  8,                      // Probe interval backs off to 8 seconds
 
-		GossipNodes:          1,                      // Gossip to 3 nodes
+		GossipNodes:          3,                      // Gossip to 3 nodes
 		GossipInterval:       200 * time.Millisecond, // Gossip more rapidly
 		GossipToTheDeadTime:  30 * time.Second,       // Same as push/pull
 		GossipVerifyIncoming: true,
