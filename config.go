@@ -309,19 +309,19 @@ func DefaultLANConfig() *Config {
 		AdvertisePort:           7946,
 		ProtocolVersion:         ProtocolVersion2Compatible,
 		TCPTimeout:              20 * time.Second,       // Timeout after 10 seconds
-		IndirectChecks:          5,                      // Use 3 nodes for the indirect ping
-		RetransmitMult:          5,                      // Retransmit a message 4 * log(N+1) nodes
-		SuspicionMult:           6,                      // Suspect a node for 4 * log(N+1) * Interval
-		SuspicionMaxTimeoutMult: 8,                      // For 10k nodes this will give a max timeout of 120 seconds
-		PushPullInterval:        60 * time.Second,       // Low frequency
+		IndirectChecks:          1,                      // Use 3 nodes for the indirect ping
+		RetransmitMult:          1,                      // Retransmit a message 4 * log(N+1) nodes
+		SuspicionMult:           1,                      // Suspect a node for 4 * log(N+1) * Interval
+		SuspicionMaxTimeoutMult: 6,                      // For 10k nodes this will give a max timeout of 120 seconds
+		PushPullInterval:        150 * time.Second,       // Low frequency
 		ProbeTimeout:            2 * time.Second, // Reasonable RTT time for LAN
-		ProbeInterval:           3 * time.Second,        // Failure check every second
+		ProbeInterval:           120 * time.Second,        // Failure check every second
 		DisableTcpPings:         false,                  // TCP pings are safe, even with mixed versions
 		AwarenessMaxMultiplier:  10,                      // Probe interval backs off to 8 seconds
 
-		GossipNodes:          3,                      // Gossip to 3 nodes
-		GossipInterval:       500 * time.Millisecond, // Gossip more rapidly
-		GossipToTheDeadTime:  45 * time.Second,       // Same as push/pull
+		GossipNodes:          1,                      // Gossip to 3 nodes
+		GossipInterval:       15 * time.Second, // Gossip more rapidly
+		GossipToTheDeadTime:  150 * time.Second,       // Same as push/pull
 		GossipVerifyIncoming: true,
 		GossipVerifyOutgoing: true,
 
