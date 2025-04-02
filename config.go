@@ -308,19 +308,19 @@ func DefaultLANConfig() *Config {
 		AdvertiseAddr:           "",
 		AdvertisePort:           7946,
 		ProtocolVersion:         ProtocolVersion2Compatible,
-		TCPTimeout:              15 * time.Second,       // Timeout after 10 seconds
+		TCPTimeout:              20 * time.Second,       // Timeout after 10 seconds
 		IndirectChecks:          3,                      // Use 3 nodes for the indirect ping
-		RetransmitMult:          3,                      // Retransmit a message 4 * log(N+1) nodes
-		SuspicionMult:           2,                      // Suspect a node for 4 * log(N+1) * Interval
-		SuspicionMaxTimeoutMult: 8,                      // For 10k nodes this will give a max timeout of 120 seconds
-		PushPullInterval:        30 * time.Second,       // Low frequency
-		ProbeTimeout:            500 * time.Millisecond, // Reasonable RTT time for LAN (How long to wait for a response when checking if a node is alive)
-		ProbeInterval:           15 * time.Second,        // Failure check every second
+		RetransmitMult:          2,                      // Retransmit a message 4 * log(N+1) nodes
+		SuspicionMult:           3,                      // Suspect a node for 4 * log(N+1) * Interval
+		SuspicionMaxTimeoutMult: 10,                      // For 10k nodes this will give a max timeout of 120 seconds
+		PushPullInterval:        60 * time.Second,       // Low frequency
+		ProbeTimeout:            700 * time.Millisecond, // Reasonable RTT time for LAN (How long to wait for a response when checking if a node is alive)
+		ProbeInterval:           10 * time.Second,        // Failure check every second
 		DisableTcpPings:         false,                  // TCP pings are safe, even with mixed versions
 		AwarenessMaxMultiplier:  10,                      // Probe interval backs off to 8 seconds
 
 		GossipNodes:          3,                      // Gossip to 3 nodes
-		GossipInterval:       5 * time.Second, // Gossip more rapidly
+		GossipInterval:       2 * time.Second, // Gossip more rapidly
 		GossipToTheDeadTime:  150 * time.Second,       // Same as push/pull
 		GossipVerifyIncoming: true,
 		GossipVerifyOutgoing: true,
