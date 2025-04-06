@@ -312,7 +312,7 @@ func DefaultLANConfig() *Config {
 		IndirectChecks:          3,                      // Use 3 nodes for the indirect ping
 		RetransmitMult:          2,                      // Retransmit a message 4 * log(N+1) nodes
 		SuspicionMult:           3,                      // Suspect a node for 4 * log(N+1) * Interval
-		SuspicionMaxTimeoutMult: 4,                      // For 10k nodes this will give a max timeout of 120 seconds
+		SuspicionMaxTimeoutMult: 6,                      // For 10k nodes this will give a max timeout of 120 seconds
 		PushPullInterval:        90 * time.Second,       // Low frequency
 		ProbeTimeout:            500 * time.Millisecond, // Reasonable RTT time for LAN (How long to wait for a response when checking if a node is alive)
 		ProbeInterval:           5 * time.Second,        // Failure check every second
