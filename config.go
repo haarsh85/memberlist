@@ -310,18 +310,18 @@ func DefaultLANConfig() *Config {
 		ProtocolVersion:         ProtocolVersion2Compatible,
 		TCPTimeout:              20 * time.Second,       // Timeout after 10 seconds
 		IndirectChecks:          3,                      // Use 3 nodes for the indirect ping
-		RetransmitMult:          4,                      // Retransmit a message 4 * log(N+1) nodes
-		SuspicionMult:           5,                      // Suspect a node for 4 * log(N+1) * Interval
+		RetransmitMult:          3,                      // Retransmit a message 4 * log(N+1) nodes
+		SuspicionMult:           4,                      // Suspect a node for 4 * log(N+1) * Interval
 		SuspicionMaxTimeoutMult: 6,                      // For 10k nodes this will give a max timeout of 120 seconds
-		PushPullInterval:        45 * time.Second,       // Low frequency
-		ProbeTimeout:            200 * time.Millisecond, // Reasonable RTT time for LAN (How long to wait for a response when checking if a node is alive)
-		ProbeInterval:           2 * time.Second,        // Failure check every second
+		PushPullInterval:        60 * time.Second,       // Low frequency
+		ProbeTimeout:            500 * time.Millisecond, // Reasonable RTT time for LAN (How long to wait for a response when checking if a node is alive)
+		ProbeInterval:           3 * time.Second,        // Failure check every second
 		DisableTcpPings:         false,                  // TCP pings are safe, even with mixed versions
 		AwarenessMaxMultiplier:  6,                      // Probe interval backs off to 8 seconds
 
 		GossipNodes:          3,                      // Gossip to 3 nodes
-		GossipInterval:       700 * time.Millisecond, // Gossip more rapidly
-		GossipToTheDeadTime:  90 * time.Second,       // Same as push/pull
+		GossipInterval:       1 * time.Second, // Gossip more rapidly
+		GossipToTheDeadTime:  120 * time.Second,       // Same as push/pull
 		GossipVerifyIncoming: true,
 		GossipVerifyOutgoing: true,
 
