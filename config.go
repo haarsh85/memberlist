@@ -345,12 +345,12 @@ func DefaultLANConfig() *Config {
 // still very conservative and errs on the side of caution.
 func DefaultWANConfig() *Config {
 	conf := DefaultLANConfig()
-	conf.TCPTimeout = 30 * time.Second
-	conf.SuspicionMult = 6
-	conf.PushPullInterval = 60 * time.Second
-	conf.ProbeTimeout = 3 * time.Second
+	conf.TCPTimeout = 10 * time.Second
+	conf.SuspicionMult = 5
+	conf.PushPullInterval = 90 * time.Second
+	conf.ProbeTimeout = 1 * time.Second
 	conf.ProbeInterval = 5 * time.Second
-	conf.GossipNodes = 4 // Gossip less frequently, but to an additional node
+	conf.GossipNodes = 15
 	conf.GossipInterval = 500 * time.Millisecond
 	conf.GossipToTheDeadTime = 60 * time.Second
 	return conf
