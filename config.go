@@ -347,7 +347,7 @@ func DefaultWANConfig() *Config {
 	conf := DefaultLANConfig()
 	conf.TCPTimeout = 10 * time.Second
 	conf.SuspicionMult = 5
-	conf.PushPullInterval = 90 * time.Second
+	conf.PushPullInterval = 30 * time.Second
 	conf.ProbeTimeout = 1 * time.Second
 	conf.ProbeInterval = 5 * time.Second
 	conf.GossipNodes = 15
