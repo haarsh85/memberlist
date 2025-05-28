@@ -350,8 +350,8 @@ func DefaultWANConfig() *Config {
 	conf.PushPullInterval = 30 * time.Second
 	conf.ProbeTimeout = 1 * time.Second
 	conf.ProbeInterval = 5 * time.Second
-	conf.GossipNodes = 15
-	conf.GossipInterval = 500 * time.Millisecond
+	conf.GossipNodes = 10
+	conf.GossipInterval = 200 * time.Millisecond
 	conf.GossipToTheDeadTime = 60 * time.Second
 	return conf
 }
