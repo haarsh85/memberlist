@@ -308,20 +308,20 @@ func DefaultLANConfig() *Config {
 		AdvertiseAddr:           "",
 		AdvertisePort:           7946,
 		ProtocolVersion:         ProtocolVersion2Compatible,
-		TCPTimeout:              20 * time.Second,       // Timeout after 10 seconds
+		TCPTimeout:              10 * time.Second,       // Timeout after 10 seconds
 		IndirectChecks:          3,                      // Use 3 nodes for the indirect ping
-		RetransmitMult:          2,                      // Retransmit a message 4 * log(N+1) nodes
-		SuspicionMult:           3,                      // Suspect a node for 4 * log(N+1) * Interval
+		RetransmitMult:          4,                      // Retransmit a message 4 * log(N+1) nodes
+		SuspicionMult:           4,                      // Suspect a node for 4 * log(N+1) * Interval
 		SuspicionMaxTimeoutMult: 6,                      // For 10k nodes this will give a max timeout of 120 seconds
-		PushPullInterval:        90 * time.Second,       // Low frequency
+		PushPullInterval:        30 * time.Second,       // Low frequency
 		ProbeTimeout:            500 * time.Millisecond, // Reasonable RTT time for LAN (How long to wait for a response when checking if a node is alive)
-		ProbeInterval:           5 * time.Second,        // Failure check every second
+		ProbeInterval:           1 * time.Second,        // Failure check every second
 		DisableTcpPings:         false,                  // TCP pings are safe, even with mixed versions
-		AwarenessMaxMultiplier:  6,                      // Probe interval backs off to 8 seconds
+		AwarenessMaxMultiplier:  8,                      // Probe interval backs off to 8 seconds
 
-		GossipNodes:          3,                 // Gossip to 3 nodes
-		GossipInterval:       2 * time.Second,   // Gossip more rapidly
-		GossipToTheDeadTime:  120 * time.Second, // Same as push/pull
+		GossipNodes:          10,                 // Gossip to 3 nodes
+		GossipInterval:       200 * time.Millisecond,   // Gossip more rapidly
+		GossipToTheDeadTime:  30 * time.Second, // Same as push/pull
 		GossipVerifyIncoming: true,
 		GossipVerifyOutgoing: true,
 
@@ -345,13 +345,13 @@ func DefaultLANConfig() *Config {
 // still very conservative and errs on the side of caution.
 func DefaultWANConfig() *Config {
 	conf := DefaultLANConfig()
-	conf.TCPTimeout = 10 * time.Second
-	conf.SuspicionMult = 5
-	conf.PushPullInterval = 30 * time.Second
-	conf.ProbeTimeout = 1 * time.Second
+	conf.TCPTimeout = 30 * time.Second
+	conf.SuspicionMult = 6
+	conf.PushPullInterval = 60 * time.Second
+	conf.ProbeTimeout = 3 * time.Second
 	conf.ProbeInterval = 5 * time.Second
-	conf.GossipNodes = 10
-	conf.GossipInterval = 200 * time.Millisecond
+	conf.GossipNodes = 4
+	conf.GossipInterval = 500 * time.Millisecond
 	conf.GossipToTheDeadTime = 60 * time.Second
 	return conf
 }
