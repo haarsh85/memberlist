@@ -314,8 +314,8 @@ func DefaultLANConfig() *Config {
 		SuspicionMult:           4,                      // Suspect a node for 4 * log(N+1) * Interval
 		SuspicionMaxTimeoutMult: 6,                      // For 10k nodes this will give a max timeout of 120 seconds
 		PushPullInterval:        30 * time.Second,       // Low frequency
-		ProbeTimeout:            100 * time.Millisecond, // Reasonable RTT time for LAN (How long to wait for a response when checking if a node is alive)
-		ProbeInterval:           5 * time.Second,        // Failure check every second
+		ProbeTimeout:            150 * time.Millisecond, // Reasonable RTT time for LAN (How long to wait for a response when checking if a node is alive)
+		ProbeInterval:           3 * time.Second,        // Failure check every second
 		DisableTcpPings:         false,                  // TCP pings are safe, even with mixed versions
 		AwarenessMaxMultiplier:  8,                      // Probe interval backs off to 8 seconds
 
