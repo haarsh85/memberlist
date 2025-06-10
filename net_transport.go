@@ -185,6 +185,9 @@ func (t *NetTransport) FinalAdvertiseAddr(ip string, port int) (net.IP, int, err
 // See Transport.
 func (t *NetTransport) WriteTo(b []byte, addr string) (time.Time, error) {
 	a := Address{Addr: addr, Name: ""}
+	sendTime := time.Now()
+	elapsed := time.Since(sendTime)
+	fmt.Printf("[memberlist] UDP send to %s — send_time=%dµs\n", addr, elapsed.Microseconds())
 	return t.WriteToAddress(b, a)
 }
 
